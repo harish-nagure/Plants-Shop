@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* logo left, profile right */
+  align-items: center;
+  padding: 8px 3%;
+  position: relative; /* to center text absolutely */
+  background-color: rgb(243, 234, 223);
+}
+
+.logo-container .logo {
+  width: max(10%, 80px);
+}
+
+.logo-container-header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* perfectly center text */
+  text-align: center;
+}
+
+.logo-container-header p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.logo-container-profile .profile {
+  width: 60px;
+  border-radius: 50%;
+}

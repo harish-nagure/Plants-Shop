@@ -1,0 +1,65 @@
+import express from 'express';
+import multer from 'multer';
+import fs from 'fs';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// upload middleware for image
+const storage = multer.diskStorage({
+    destination:"uploads_search",
+    filename:(req,file,cb)=>{
+        return cb(null,`${Date.now()}${file.originalname}`)
+    }
+});
+
+// const upload = multer({
+//   storage: multer.memoryStorage(),
+//     limits: { fileSize: 5 * 1024 * 1024 },
+// });
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+
+
+
+const searchRouter = express.Router();
+
+searchRouter.post("/identify-plant", upload.single("image"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No image uploaded" });
+    }
+
+    const imageBuffer = fs.readFileSync(req.file.path);
+    //  const imageBuffer = req.file.buffer;
+
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+    const result = await model.generateContent([
+      "Identify this plant and describe it in 2–3 lines.",
+      {
+        inlineData: {
+          data: imageBuffer.toString("base64"),
+          mimeType: "image/jpeg",
+        },
+      },
+    ]);
+    console.log(result);
+    res.json({ plant: result.response.text() });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+searchRouter.get("/", (req, res) => {
+  res.send("API working!");
+});
+
+
+export default searchRouter;
