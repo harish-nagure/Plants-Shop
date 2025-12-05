@@ -1,6 +1,7 @@
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./IdentifyPlant.css";
 
-export default function IdentifyPlant() {
+export default function IdentifyPlant({ setPlantNamePhoto }) {
   const [preview, setPreview] = useState(null);
   const [result, setResult] = useState("");
   const pasteAreaRef = useRef(null);
@@ -36,21 +37,42 @@ export default function IdentifyPlant() {
       });
 
       const data = await response.json();
-      setResult(data.plant);
+      console.log(data);
+
+      const cleaned = data.plant
+        .replace(/```json/gi, "")
+        .replace(/```/g, "")
+        .trim();
+
+      console.log("CLEANED:", cleaned);
+
+      const parsed = JSON.parse(cleaned);
+      console.log("PARSED:", parsed);
+
+      // Show readable output
+      setResult(`${parsed.name} — ${parsed.description}`);
+
+      // Send only name upward
+      setPlantNamePhoto(parsed.name);
+
+
     } catch (err) {
       setResult("Error: " + err.message);
     }
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Plant Identifier</h2>
+    <div className="identify-container">
+      <h2 className="identify-title">🌿 Identify Plant</h2>
 
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
+      <label className="upload-box">
+        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        <span>📸 Upload or Paste Image</span>
+      </label>
 
-      {preview && <img src={preview} width="200" alt="preview" />}
+      {preview && <img src={preview} className="preview-img" alt="preview" />}
 
-      <pre>{result}</pre>
+      {result && <div className="result-box">{result}</div>}
     </div>
   );
 }

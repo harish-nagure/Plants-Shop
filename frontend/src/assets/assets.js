@@ -44,7 +44,7 @@ export const assets = {
     parcel_icon
 }
 
-export const plant_list = [
+export const plant_category = [
     {
         plant_name: "Indoor Plants",
         plant_image: menu_1

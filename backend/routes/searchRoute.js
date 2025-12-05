@@ -7,10 +7,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // upload middleware for image
 const storage = multer.diskStorage({
-    destination:"uploads_search",
-    filename:(req,file,cb)=>{
-        return cb(null,`${Date.now()}${file.originalname}`)
-    }
+  destination: "uploads_search",
+  filename: (req, file, cb) => {
+    return cb(null, `${Date.now()}${file.originalname}`)
+  }
 });
 
 // const upload = multer({
@@ -39,8 +39,20 @@ searchRouter.post("/identify-plant", upload.single("image"), async (req, res) =>
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
+    const prompt = `
+          You are a plant identification expert. Look at the plant in the image and respond ONLY in the following JSON format:
+          {
+            "name": "<plant common name or closest match>",
+            "description": "<2–3 line description about its appearance, features, and growing conditions>"
+          }
+          Rules:
+          - If uncertain, provide the closest possible match but DO NOT leave fields empty.
+          - The response MUST always be valid JSON.
+          - The description should be accurate and concise.
+          - Do NOT include extra text outside the JSON.`;
+
     const result = await model.generateContent([
-      "Identify this plant and describe it in 2–3 lines.",
+      prompt,
       {
         inlineData: {
           data: imageBuffer.toString("base64"),
