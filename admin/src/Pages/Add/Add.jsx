@@ -22,7 +22,7 @@ const Add = () => {
 
     const onSubmitHandle = async(event)=>{
         event.preventDefault();
-        const formData = new FormData();  // fixed capitalization
+        const formData = new FormData();
         formData.append("name",data.name);
         formData.append("description",data.description);
         formData.append("price",Number(data.price));
