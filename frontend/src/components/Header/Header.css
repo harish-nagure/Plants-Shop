@@ -3,6 +3,7 @@
     margin: 30px 15px;
     background: url('../../assets/image.png') no-repeat;
     background-size: contain;
+    border-radius: 20px;
     position: relative;
 }
 .header-content{

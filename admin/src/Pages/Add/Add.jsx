@@ -11,7 +11,7 @@ const Add = () => {
         name:"",
         description:"",
         price:"",
-        category:"indoor",
+        category:"Indoor Plants",
     });
 
     const onChangeHandler =(event)=>{

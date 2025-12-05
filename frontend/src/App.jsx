@@ -9,6 +9,8 @@ import Login from './components/Login/Login';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import IdentifyPlant from './IdentifyPlant';
+import ProductPage from './pages/ProductPage/ProductPage';
+
 const App = () => {
   const [showLogin,setShowLogin] = useState(false);
 
@@ -24,6 +26,7 @@ const App = () => {
         <Route path='/verify' element={<Verify/>}></Route>
         <Route path='/MyOrders' element={<MyOrders/>}></Route>
         <Route path='/identify-plant' element={<IdentifyPlant/>}></Route>
+        <Route path="/product/:id" element={<ProductPage />} />
       </Routes>
       
     </div>
