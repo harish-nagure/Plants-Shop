@@ -1,9 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+
 import { useParams, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import './ProductPage.css';
 
+
+
 const ProductPage = () => {
+
+    useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  
   const { id } = useParams();
   const { plant_list, addToCart, cartItems, removeFromCart, url } = useContext(StoreContext);
   const navigate = useNavigate();
