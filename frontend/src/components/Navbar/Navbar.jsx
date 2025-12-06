@@ -50,7 +50,9 @@ const Navbar = ({ setShowLogin }) => {
             </ul>
 
             <div className="navbar-right">
+              <HashLink smooth to="/#search-bar">
                 <img src={assets.search_icon} alt="" />
+              </HashLink>
 
                 <div className="navbar-search-icon">
                     <Link to="/cart"> <img src={assets.basket_icon} alt="" /></Link>

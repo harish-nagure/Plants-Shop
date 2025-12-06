@@ -3,6 +3,8 @@ import './ExploreMenu.css'
 
 import { StoreContext } from '../../context/StoreContext';
 import { plant_category } from '../../assets/assets'
+import { assets } from '../../assets/assets';
+
 import IdentifyPlant from '../../IdentifyPlant';
 
 
@@ -56,14 +58,18 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
                 })}
             </div>
 
-            <div className='search-bar'>
+            <div className='search-bar' id='search-bar'>
+                <div className="search-bar-left">
+
+                <img src={assets.search_icon} alt="" />
                 <input
                     type='search'
                     placeholder='Search for plants...'
                     className='explore-search-bar'
                     value={search}
                     onChange={handleSearch}
-                />
+                    />
+                </div>
                 <IdentifyPlant setPlantNamePhoto={setPlantNamePhoto} />
             </div>
 
