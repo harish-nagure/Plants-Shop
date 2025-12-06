@@ -31,8 +31,13 @@ const ProductPage = () => {
             <div className="product-details">
           <h1>{product.name}</h1>
           <hr />
+          <br /><br />
+          <h3>About This Product</h3>
           <br />
           <p className="product-description">{product.description}</p>
+           
+           <h3>Price:</h3>
+           <br />
           <p className="product-price">₹{product.price}</p>
         </div>
         <div>
