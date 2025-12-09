@@ -43,6 +43,20 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
             <p className='explore-menu-text'>
                 Discover a world of greenery! Browse our diverse collection and find your next favorite plant, from indoor greens to flowering beauties and rare exotic species. Ready to bring nature home?
             </p>
+             <div className='search-bar' id='search-bar'>
+                <div className="search-bar-left">
+
+                <img src={assets.search_icon} alt="" />
+                <input
+                    type='search'
+                    placeholder='Search for plants...'
+                    className='explore-search-bar'
+                    value={search}
+                    onChange={handleSearch}
+                    />
+                </div>
+                <IdentifyPlant setPlantNamePhoto={setPlantNamePhoto} />
+            </div>
             <div className="explore-menu-list">
                 {plant_category.map((item, index) => {
                     return (
@@ -58,7 +72,7 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
                 })}
             </div>
 
-            <div className='search-bar' id='search-bar'>
+            {/* <div className='search-bar' id='search-bar'>
                 <div className="search-bar-left">
 
                 <img src={assets.search_icon} alt="" />
@@ -71,7 +85,7 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
                     />
                 </div>
                 <IdentifyPlant setPlantNamePhoto={setPlantNamePhoto} />
-            </div>
+            </div> */}
 
             <hr />
 

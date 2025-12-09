@@ -66,28 +66,43 @@ export default function IdentifyPlant({ setPlantNamePhoto }) {
     setPlantNamePhoto("");
   };
 
-  return (
-    <div className="identify-container">
-      <span className="close-icon" onClick={handleReset}>
-          &times;
-      </span>
-      <h2 className="identify-title">🌿 Identify Plant</h2>
-      <label className="upload-box">
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        <span>📸 Upload or Paste Image</span>
-      </label>
+  // return (
+  //   <div className="identify-container">
+  //     <span className="close-icon" onClick={handleReset}>
+  //         &times;
+  //     </span>
+  //     <h2 className="identify-title">🌿 Identify Plant</h2>
+  //     <label className="upload-box">
+  //       <input type="file" accept="image/*" onChange={handleImageUpload} />
+  //       <span>📸 Upload or Paste Image</span>
+  //     </label>
       
 
-       {preview && (
-        <div className="preview-wrapper">
-          <img src={preview} className="preview-img" alt="preview" />
+  //      {preview && (
+  //       <div className="preview-wrapper">
+  //         <img src={preview} className="preview-img" alt="preview" />
           
-        </div>
-      )}
+  //       </div>
+  //     )}
 
-      {result && <div className="result-box">{result}
-            </div>
-        }
-    </div>
-  );
+  //     {result && <div className="result-box">{result}
+  //           </div>
+  //       }
+  //   </div>
+  // );
+
+  return (
+  <>
+    <label className="image-search-btn">
+      <input type="file" accept="image/*" onChange={handleImageUpload} />
+
+      <img src={assets.searchByImg} alt="Search by image" className="img-search-icon" />
+
+      <span className="hover-text">Search by Image</span>
+    </label>
+
+    {/* {result && <div className="result-box">{result}</div>} */}
+  </>
+);
+
 }
