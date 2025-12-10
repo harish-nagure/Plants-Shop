@@ -23,6 +23,7 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import searchByImg from './searchByImg.png'
+import menu_icon from './menu_icon.png'
 
 export const assets = {
     logo2,
@@ -43,7 +44,8 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon,
-    searchByImg
+    searchByImg,
+    menu_icon
 }
 
 export const plant_category = [
