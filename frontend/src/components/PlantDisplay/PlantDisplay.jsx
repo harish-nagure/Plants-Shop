@@ -10,7 +10,7 @@ const PlantDisplay = ({ category, name }) => {
   
   return (
     <div className='plant-display' id='plant-display'>
-      <h2>Variety Of Plants!</h2>
+      <h2>Variety Of Plants !</h2>
       <div className="plant-display-list">
         {plant_list
           .filter((item) => {

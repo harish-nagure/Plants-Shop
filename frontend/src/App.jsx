@@ -10,6 +10,7 @@ import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import IdentifyPlant from './IdentifyPlant';
 import ProductPage from './pages/ProductPage/ProductPage';
+import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 
 const App = () => {
   const [showLogin,setShowLogin] = useState(false);
@@ -27,6 +28,8 @@ const App = () => {
         <Route path='/MyOrders' element={<MyOrders/>}></Route>
         <Route path='/identify-plant' element={<IdentifyPlant/>}></Route>
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
+
       </Routes>
       
     </div>

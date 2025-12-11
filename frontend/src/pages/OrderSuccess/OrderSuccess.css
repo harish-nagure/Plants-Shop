@@ -1,0 +1,29 @@
+.cart-total button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 17px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+}
+
+/* Online Payment Button */
+.pay-online {
+    background-color: #1F7A8C;
+    color: white;
+}
+.pay-online:hover{
+    background-color: #022B3A;
+}
+
+/* COD Button */
+.cod-btn {
+    background-color: #BFDBF7;
+    color: #022B3A;
+}
+.cod-btn:hover {
+    background-color: #1F7A8C;
+    color: white;
+}

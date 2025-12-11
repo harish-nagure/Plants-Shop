@@ -34,7 +34,7 @@ const Navbar = ({ setShowLogin }) => {
 
             <div className="navbar-right">
 
-                <HashLink smooth to="/#search-bar">
+                <HashLink smooth to="/#explore-menu">
                     <img src={assets.search_icon} alt="" />
                 </HashLink>
 
@@ -43,7 +43,7 @@ const Navbar = ({ setShowLogin }) => {
                     <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
                 </div>
 
-                {/* Dashboard/Hamburger Icon (Mobile Only) */}
+                {/* Dashboard Icon (Mobile Only) */}
                 <img 
                     src={assets.menu_icon}
                     alt="menu"

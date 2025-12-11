@@ -71,7 +71,6 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
                     )
                 })}
             </div>
-
             {/* <div className='search-bar' id='search-bar'>
                 <div className="search-bar-left">
 
