@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 //---------------------- STRIPE ORDER -----------------------
 const placeOrder = async (req,res)=>{
-    const frontendURL = "http://localhost:5174";
+    const frontendURL = "http://localhost:5173";
     try {
         const newOrder = new orderModel({
             userId:req.body.userId,
@@ -59,7 +59,7 @@ const placeCODOrder = async (req, res) => {
             amount: req.body.amount,
             address: req.body.address,
             payment: false,  
-            status: "Order Placed (COD)"
+            status: "Plant Processing(COD)"
         });
 
         await codOrder.save();
@@ -92,7 +92,7 @@ const verifyOrder = async (req,res)=>{
 //---------------------- USER ORDERS -----------------------
 const userOrders = async (req,res)=>{
     try {
-        const orders = await orderModel.find({userId:req.body.userId});
+        const orders = await orderModel.find({userId:req.body.userId}).sort({ _id: -1 });
         res.json({success:true,data:orders});
     } catch (error) {
         console.log(error);
@@ -103,7 +103,7 @@ const userOrders = async (req,res)=>{
 //---------------------- ADMIN LIST ORDERS -----------------------
 const listOrders = async (req,res)=>{
     try {
-        const orders = await orderModel.find({});
+        const orders = await orderModel.find({}).sort({ _id: -1 });
         res.json({success:true,data:orders});
     } catch (error) {
         console.log(error);
@@ -124,9 +124,9 @@ const updateStatus = async (req,res)=>{
 
 export {
     placeOrder,
-    placeCODOrder,   // <-- NEW
+    placeCODOrder,
     verifyOrder,
     userOrders,
-    listOrders,      // <-- STILL HERE (ADMIN)
+    listOrders,
     updateStatus
 };
