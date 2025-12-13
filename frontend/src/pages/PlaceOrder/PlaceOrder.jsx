@@ -78,6 +78,7 @@ const PlaceOrder = () => {
     });
 
     let orderData = {
+      userId: userId,
       address: data,
       items: orderItems,
       amount: getTotalCartAmount() + 40,
