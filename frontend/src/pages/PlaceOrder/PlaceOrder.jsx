@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
 
-  const { getTotalCartAmount, token, plant_list, cartItems, url } = useContext(StoreContext);
+  const { getTotalCartAmount, token, plant_list, cartItems, url,clearCart } = useContext(StoreContext);
 
   const [data, setData] = useState({
     firstname: "",
@@ -66,7 +66,7 @@ const PlaceOrder = () => {
 
   const navigate = useNavigate();
 
-  // COD ORDER — Send to Backend & Redirect
+  // COD ORDER
   const placeCODOrder = async () => {
     let orderItems = [];
     plant_list.forEach((item) => {
@@ -93,6 +93,7 @@ const PlaceOrder = () => {
       );
 
       if (response.data.success) {
+        clearCart();
         navigate('/order-success', { state: { paymentType: "COD" } });
       } else {
         alert("Error placing COD order");

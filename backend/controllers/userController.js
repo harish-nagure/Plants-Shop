@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js";
+import orderModel from "../models/orderModel.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
@@ -64,4 +65,17 @@ const loginUser = async (req,res) => {
         res.json({success:false,message:"Error"});
     }
 }
-export {loginUser,registerUser};
+
+const listUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({}).select("-password");
+    res.json({ success: true, data: users });
+  } catch (error) {
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+
+
+
+export { loginUser, registerUser, listUsers };

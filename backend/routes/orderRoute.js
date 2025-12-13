@@ -10,7 +10,7 @@ orderRouter.post("/verify",verifyOrder);
 orderRouter.post("/userOrders",authMiddleware,userOrders);
 orderRouter.get("/list",listOrders);
 orderRouter.post("/status",updateStatus);
-orderRouter.post('/place-cod', placeCODOrder);   // <-- NEW COD ROUTE
+orderRouter.post('/place-cod',authMiddleware, placeCODOrder);
 
 
 
