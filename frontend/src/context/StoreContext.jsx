@@ -10,17 +10,22 @@ const StoreContextProvider = (props) => {
 
   // Initialize token from localStorage only once
   const [token, _setToken] = useState(localStorage.getItem("token") || "");
+  const [username, setUsername] = useState(
+  localStorage.getItem("username") || ""
+);
 
   // Custom setter to sync state + localStorage
   const setToken = (newToken) => {
-    _setToken(newToken);
-    if (newToken) {
-      localStorage.setItem("token", newToken);
-    } else {
-      localStorage.removeItem("token");
-    }
-    
-  };
+  _setToken(newToken);
+  if (newToken) {
+    localStorage.setItem("token", newToken);
+  } else {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setUsername("");
+  }
+};
+
   useEffect(() => {
     const loadData = async () => {
       await fetchPlantList();
@@ -73,18 +78,21 @@ const clearCart = () => {
       setCartItems(response.data.cartData);
    }
 
-  const contextValue = {
-    plant_list,
-    cartItems,
-    setCartItems,
-    addToCart,
-    removeFromCart,
-    getTotalCartAmount,
-    url,
-    token,
-    setToken,
-    clearCart
-  };
+const contextValue = {
+  plant_list,
+  cartItems,
+  setCartItems,
+  addToCart,
+  removeFromCart,
+  getTotalCartAmount,
+  url,
+  token,
+  setToken,
+  clearCart,
+  username,
+  setUsername
+};
+
 
   return (
     <StoreContext.Provider value={contextValue}>

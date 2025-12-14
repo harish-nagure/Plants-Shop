@@ -6,10 +6,11 @@ import axios from 'axios';
 
 const Login = ({setShowLogin}) => {
 
-    const {url,setToken} = useContext(StoreContext);
+    const { url, setToken, setUsername } = useContext(StoreContext);
+
     const [currentState,setCurrentState] = useState("Sign Up");
     const [data,setData] = useState({name:"",email:"",password:""});
-
+    
     const onChangeHandler = (event) => {
       const name = event.target.name;
       const value = event.target.value;
@@ -26,11 +27,16 @@ const Login = ({setShowLogin}) => {
         }
 
         const response = await axios.post(newUrl,data);
-        if(response.data.success){
-            setToken(response.data.token);
-            localStorage.setItem("key",response.data.token);
-            setShowLogin(false);
-        }else{
+        if (response.data.success) {
+    setToken(response.data.token);
+    setUsername(response.data.name);
+
+    localStorage.setItem("username", response.data.name);
+    setShowLogin(false);
+}
+
+
+        else{
             alert(response.data.message);
         }
     }
