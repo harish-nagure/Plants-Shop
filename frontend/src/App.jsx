@@ -11,6 +11,8 @@ import MyOrders from './pages/MyOrders/MyOrders';
 import IdentifyPlant from './IdentifyPlant';
 import ProductPage from './pages/ProductPage/ProductPage';
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+import { ToastContainer } from "react-toastify";
+
 
 const App = () => {
   const [showLogin,setShowLogin] = useState(false);
@@ -20,6 +22,7 @@ const App = () => {
     {showLogin?<Login setShowLogin={setShowLogin}/>:<></>}
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>
+      <ToastContainer position="top-right" autoClose={2000} />
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>
@@ -29,6 +32,8 @@ const App = () => {
         <Route path='/identify-plant' element={<IdentifyPlant/>}></Route>
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/login" element={<Login />} />
+
 
       </Routes>
       
