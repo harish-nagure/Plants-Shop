@@ -11,7 +11,7 @@ const createToken=(id)=>{
 
 //register
 const registerUser = async (req,res) => {
-    const {name,email,password} = req.body;
+    const {name,email,password,phone} = req.body;
     try {
         //checking existing email
         const exists = await userModel.findOne({email});
@@ -34,15 +34,19 @@ const registerUser = async (req,res) => {
         const newUser = new userModel({
             name:name,
             email:email,
-            password:hashPass});
+            password:hashPass,
+            phone:phone});
 
         await newUser.save();
+        console.log("Logged in User Phone:", newUser.phone);
+
         const token = createToken(newUser._id);
         res.json({
   success: true,
   token,
   name: newUser.name,
-  email: newUser.email
+  email: newUser.email,
+   phone: newUser.phone  
 });
 
 
@@ -69,7 +73,8 @@ const loginUser = async (req,res) => {
   success: true,
   token,
   name: user.name,
-  email: user.email
+  email: user.email,
+  phone:user.phone
 });
 
     } catch (error) {

@@ -9,7 +9,7 @@ const Login = ({setShowLogin}) => {
     const { url, setToken, setUsername } = useContext(StoreContext);
 
     const [currentState,setCurrentState] = useState("Sign Up");
-    const [data,setData] = useState({name:"",email:"",password:""});
+    const [data,setData] = useState({name:"",email:"",password:"",phone:""});
     
     const onChangeHandler = (event) => {
       const name = event.target.name;
@@ -30,12 +30,10 @@ const Login = ({setShowLogin}) => {
         if (response.data.success) {
     setToken(response.data.token);
     setUsername(response.data.name);
-
+     localStorage.setItem("phone", response.data.phone); 
     localStorage.setItem("username", response.data.name);
     setShowLogin(false);
 }
-
-
         else{
             alert(response.data.message);
         }
@@ -50,7 +48,8 @@ const Login = ({setShowLogin}) => {
                 <img onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt="" />
             </div>
             <div className="login-inputs">
-                {currentState==="Login"?<></>:<input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required />}
+                {currentState==="Login"?<></>:<><input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required />
+                  <input name='phone' onChange={onChangeHandler} value={data.phone} type="tel" placeholder='Phone Number' required /></>}
                 <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your Email' required />
                 <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder="Enter Password" id="" required />
             </div>
