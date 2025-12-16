@@ -49,7 +49,7 @@ const Login = ({setShowLogin}) => {
             </div>
             <div className="login-inputs">
                 {currentState==="Login"?<></>:<><input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required />
-                  <input name='phone' onChange={onChangeHandler} value={data.phone} type="tel" placeholder='Phone Number' required /></>}
+                  <input name='phone' onChange={onChangeHandler} value={data.phone} type="text" maxlength="10" placeholder='Phone Number' required /></>}
                 <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your Email' required />
                 <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder="Enter Password" id="" required />
             </div>

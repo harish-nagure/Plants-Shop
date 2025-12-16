@@ -135,11 +135,11 @@ const PlaceOrder = () => {
         </div>
 
         <div className="multi-fields">
-          <input required name='zipcode' onChange={onChangeHandler} value={data.zipcode} type="text" placeholder='Pin Code' />
+          <input required name='zipcode' onChange={onChangeHandler} value={data.zipcode} type="text" maxlength="6" placeholder='Pin Code' />
           <input required name='country' onChange={onChangeHandler} value={data.country} type="text" placeholder='Country' />
         </div>
 
-        <input required name='phone' onChange={onChangeHandler} value={data.phone} type="text" placeholder='Phone' />
+        <input required name='phone' onChange={onChangeHandler} value={data.phone} type="text" maxlength="10" placeholder='Phone' />
       </div>
 
       <div className="place-order-right">

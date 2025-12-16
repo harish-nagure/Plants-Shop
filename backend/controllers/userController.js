@@ -15,9 +15,15 @@ const registerUser = async (req,res) => {
     try {
         //checking existing email
         const exists = await userModel.findOne({email});
+        const noExists = await userModel.findOne({phone});
+
         if (exists) {
             return res.json({success:false,message:"User Already Exist !"});
         }
+        if (noExists) {
+            return res.json({success:false,message:"User Already Exist !"});
+        }
+      
         //validating email
         if (!validator.isEmail(email)) {
             return res.json({success:false,message:"Please Enter Valid Email"});
