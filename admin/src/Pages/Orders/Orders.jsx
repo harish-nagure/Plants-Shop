@@ -34,6 +34,7 @@ const Orders = () => {
   
   return (
     <div className="order add">
+      <div className="add-card">
       <h3>Order Page</h3>
       <div className="order-list">
         {orders.map((order, index) => {
@@ -68,6 +69,7 @@ const Orders = () => {
             </div>
           );
         })}
+      </div>
       </div>
     </div>
   );

@@ -46,6 +46,7 @@ const Add = () => {
 
   return (
     <div className='add'>
+          <div className="add-card">
         <form className='flex-col' onSubmit={onSubmitHandle}>
             <div className="add-image-upload flex-col">
                 <p>Upload Image</p>
@@ -79,7 +80,7 @@ const Add = () => {
             </div>
             <button type='submit' className='add-btn'>Add</button>
         </form>
-      
+      </div>
     </div>
   )
 }

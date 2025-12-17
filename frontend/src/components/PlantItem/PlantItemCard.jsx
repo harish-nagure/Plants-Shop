@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 const PlantItemCard = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
-  const navigate = useNavigate(); // to navigate to single product page
-
+  const navigate = useNavigate(); 
   return (
     <div className='plant-item'>
       <div className="plant-item-image-container">
-        {/* ⚡ Only image is clickable */}
+        {/* Only image is clickable */}
         <img 
           className='plant-item-image' 
           src={`${url}/images/${image}`} 

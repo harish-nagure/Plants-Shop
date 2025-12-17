@@ -29,11 +29,12 @@
 .header-content button{
     border: none;
     font-weight: 500;
-    color: #747474;
+    color: #000000;
     padding: 1vw 2.3vw;
     background-color: white;
     font-size: max(1vw,13px);
     border-radius: 15px;
+    cursor: pointer;
 }
 
 @media (max-width:1050px) {

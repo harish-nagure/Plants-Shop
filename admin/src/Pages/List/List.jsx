@@ -37,6 +37,8 @@ const List = () => {
   return (
     <div className='list add flex-col'>
       <p className='main-title'>All Plants List</p>
+                <div className="add-card">
+
       <div className="list-table">
         <div className="list-table-format title">
             <b>Image</b>
@@ -56,6 +58,7 @@ const List = () => {
               </div>
             )
           })}
+      </div>
       </div>
     </div>
   )

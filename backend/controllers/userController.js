@@ -11,13 +11,19 @@ const createToken=(id)=>{
 
 //register
 const registerUser = async (req,res) => {
-    const {name,email,password} = req.body;
+    const {name,email,password,phone} = req.body;
     try {
         //checking existing email
         const exists = await userModel.findOne({email});
+        const noExists = await userModel.findOne({phone});
+
         if (exists) {
             return res.json({success:false,message:"User Already Exist !"});
         }
+        if (noExists) {
+            return res.json({success:false,message:"User Already Exist !"});
+        }
+      
         //validating email
         if (!validator.isEmail(email)) {
             return res.json({success:false,message:"Please Enter Valid Email"});
@@ -34,11 +40,21 @@ const registerUser = async (req,res) => {
         const newUser = new userModel({
             name:name,
             email:email,
-            password:hashPass});
+            password:hashPass,
+            phone:phone});
 
         await newUser.save();
+        console.log("Logged in User Phone:", newUser.phone);
+
         const token = createToken(newUser._id);
-        res.json({success:true,token});
+        res.json({
+  success: true,
+  token,
+  name: newUser.name,
+  email: newUser.email,
+   phone: newUser.phone  
+});
+
 
     } catch (error) {
         console.log(error);
@@ -59,7 +75,14 @@ const loginUser = async (req,res) => {
             res.json({success:false,message:"Invalid Credentials"});
         }
         const token = createToken(user._id);
-        res.json({success:true,token})
+        res.json({
+  success: true,
+  token,
+  name: user.name,
+  email: user.email,
+  phone:user.phone
+});
+
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Error"});

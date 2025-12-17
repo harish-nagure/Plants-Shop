@@ -16,11 +16,14 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
     console.log("Searching for:", plantNamePhoto.toLowerCase());
 
     useEffect(() => {
-        if (search.trim().length > 0) {
-            setPlantName(search);
-            setCategory("All");
-        }
-    }, [search]);
+  if (search.trim().length > 0) {
+    setPlantName(search);
+    setCategory("All");
+  } else {
+    setPlantName("");
+    setCategory("All");
+  }
+}, [search]);
 
     useEffect(() => {
         if (plantNamePhoto.trim().length > 0) {
