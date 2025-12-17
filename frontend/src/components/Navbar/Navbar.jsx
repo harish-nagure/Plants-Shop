@@ -9,7 +9,7 @@ const Navbar = ({ setShowLogin }) => {
 
     const [menu, setMenu] = useState('Home');
     const [sidebarOpen, setSidebarOpen] = useState(false); // <-- New State
-    const { getTotalCartAmount, token, setToken, username } = useContext(StoreContext);
+    const { getTotalCartAmount, token, setToken, username,clearCart } = useContext(StoreContext);
 
     const navigate = useNavigate();
 
@@ -18,6 +18,7 @@ const Navbar = ({ setShowLogin }) => {
         localStorage.removeItem("username"); 
         setToken("");
         navigate("/");
+        clearCart();
     };
 
     return (
