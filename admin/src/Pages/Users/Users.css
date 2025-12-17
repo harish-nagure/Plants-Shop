@@ -4,7 +4,9 @@
 }
 
 .admin-users h2 {
+  color: #5a5959;
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 table {

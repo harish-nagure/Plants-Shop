@@ -22,6 +22,8 @@ const App = () => {
     {showLogin?<Login setShowLogin={setShowLogin}/>:<></>}
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>
+      <div className="main-content">
+
       <ToastContainer position="top-right" autoClose={2000} />
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -37,6 +39,7 @@ const App = () => {
 
       </Routes>
       
+      </div>
     </div>
     <Footer/>
     </>

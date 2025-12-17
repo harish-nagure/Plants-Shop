@@ -7,6 +7,8 @@ import List from './Pages/List/List';
 import Orders from './Pages/Orders/Orders';
 import { ToastContainer, toast } from 'react-toastify';
 import Users from './Pages/Users/Users';
+// import Dashboard from './Pages/Dashboard/Dashboard';
+
 
 const App = () => {
   return (
@@ -17,6 +19,7 @@ const App = () => {
       <div className="app-content">
         <Sidebar/>
         <Routes>
+            {/* <Route path="/" element={<Dashboard/>}></Route> */}
             <Route path="/add" element={<Add/>}></Route>
             <Route path="/list" element={<List/>}></Route>
             <Route path="/orders" element={<Orders/>}></Route>

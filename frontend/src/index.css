@@ -17,6 +17,10 @@ a{
   width: 90%;
   margin: auto;
 }
+.main-content{
+      padding-top: 130px; /* match navbar height */
+
+}
 @keyframes FadeIn {
   0%{
     opacity: 0;

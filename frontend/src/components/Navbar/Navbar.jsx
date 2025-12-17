@@ -24,12 +24,12 @@ const Navbar = ({ setShowLogin }) => {
     return (
         <>
         {/* NAVBAR MAIN */}
-        <div className='navbar'>
+        <div className='navbar' id='navbar'>
             
             <Link to="/"><img src={assets.logo2} alt="" className='logo' /></Link>
 
             <ul className="navbar-menu">
-                <Link to="/" onClick={() => setMenu("Home")} className={menu === "Home" ? "active" : ""}>Home</Link>
+                <HashLink smooth to="/#header" onClick={() => setMenu("Home")} className={menu === "Home" ? "active" : ""}>Home</HashLink>
                 <HashLink smooth to="/#explore-menu" onClick={() => setMenu("Menu")} className={menu === "Menu" ? "active" : ""}>Plants</HashLink>
                 <HashLink smooth to="/#app-download" onClick={() => setMenu("Mobile-App")} className={menu === "Mobile-App" ? "active" : ""}>Mobile-App</HashLink>
                 <HashLink smooth to="/#footer" onClick={() => setMenu("Contact")} className={menu === "Contact" ? "active" : ""}>Contact Us</HashLink>
