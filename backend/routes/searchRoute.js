@@ -37,7 +37,7 @@ searchRouter.post("/identify-plant", upload.single("image"), async (req, res) =>
     const imageBuffer = fs.readFileSync(req.file.path);
     //  const imageBuffer = req.file.buffer;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = `
           You are a plant identification expert. Look at the plant in the image and respond ONLY in the following JSON format:

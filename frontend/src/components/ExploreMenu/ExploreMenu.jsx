@@ -28,6 +28,9 @@ const ExploreMenu = ({ category, setCategory, setPlantName }) => {
     useEffect(() => {
         if (plantNamePhoto.trim().length > 0) {
             setPlantName(plantNamePhoto.toLowerCase());
+            // setSearch("harish")
+            setSearch(plantNamePhoto.toLowerCase())
+            console.log("Value: "+plantNamePhoto)
             setCategory("All");
         }
     }, [plantNamePhoto]);

@@ -9,7 +9,7 @@
 }
 .myorders-order{
     display: grid;
-    grid-template-columns: 0.5fr 2.5fr 0.5fr 1fr 1.5fr 0.5fr;
+    grid-template-columns: 0.5fr 2.5fr 0.5fr 1fr 1.5fr;
     align-items: center;
     gap: 30px;
     font-size: 15px;
