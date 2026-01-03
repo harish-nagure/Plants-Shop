@@ -93,7 +93,6 @@
 /* Responsive */
 @media (max-width: 650px) {
   .search-bar {
-    flex-direction: column;
     text-align: center;
     gap: 10px;
   }
