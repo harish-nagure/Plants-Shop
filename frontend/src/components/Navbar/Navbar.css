@@ -12,7 +12,6 @@
     z-index: 1000;
     background: #f3e9e3;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-
 }
 .logo{
     width: 110px;
@@ -188,6 +187,7 @@
 
 .sidebar.open{
     right: 0;
+    top: 2rem;
 }
 
 /* Close Button */
