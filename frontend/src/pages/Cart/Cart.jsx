@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Cart.css'
 import { useContext } from 'react'
 import { StoreContext } from '../../context/StoreContext'
@@ -9,6 +9,9 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
+      useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
   return (
     <div className='cart'>
       <div className="cart-items">

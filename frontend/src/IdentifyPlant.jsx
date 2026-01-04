@@ -54,7 +54,9 @@ export default function IdentifyPlant({ setPlantNamePhoto }) {
 
       // Send only name upward
       setPlantNamePhoto(parsed.name);
+      
     } catch (err) {
+      setPlantNamePhoto("Harish");
       setResult("Error: " + err.message);
     }
   };
@@ -94,12 +96,21 @@ export default function IdentifyPlant({ setPlantNamePhoto }) {
   return (
   <>
     <label className="image-search-btn">
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-
+      <input type="file" accept="image/*" className="image-search-input" onChange={handleImageUpload} />
+      
+      {!preview && (
       <img src={assets.searchByImg} alt="Search by image" className="img-search-icon" />
-
-      <span className="hover-text">Search by Image</span>
+      )}
+      {/* <span className="hover-text">Search by Image</span> */}
     </label>
+    {preview && (
+        <div className="preview-wrapper">
+          <img src={preview} className="preview-img" alt="preview" />
+
+        {/* {result} */}
+        </div>
+      )}
+
 
     {/* {result && <div className="result-box">{result}</div>} */}
   </>

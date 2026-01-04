@@ -51,7 +51,12 @@
     .header-content p{
         display: none;
     }
-    .header-content button{
-        padding: 2vw 4vw;
-    }
+    .header-content button {
+    /* padding: 2vw 4vw; */
+    margin: 0px 10px;
+}
+    .header {
+    height: 48vw;
+    margin: 14px 14px;
+}
 }

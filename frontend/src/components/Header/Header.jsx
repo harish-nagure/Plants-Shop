@@ -7,10 +7,14 @@ const Header = () => {
 const handleBrowse = () => {
     const section = document.getElementById("explore-menu");
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      // section.scrollIntoView({ behavior: "smooth" });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
   return (
+    <>
     <div className="header" id="header">
       <div className="header-content">
         <h2>Order your favorite plants here!</h2>
@@ -24,6 +28,7 @@ const handleBrowse = () => {
         <button onClick={handleBrowse}>Browse Plants</button>
       </div>
     </div>
+    </>
   );
 };
 

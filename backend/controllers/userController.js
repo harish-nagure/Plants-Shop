@@ -99,6 +99,4 @@ const listUsers = async (req, res) => {
 };
 
 
-
-
 export { loginUser, registerUser, listUsers };

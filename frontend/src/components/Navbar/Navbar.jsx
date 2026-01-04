@@ -23,13 +23,14 @@ const Navbar = ({ setShowLogin }) => {
 
     return (
         <>
+        <div className="home" id='home'></div>
         {/* NAVBAR MAIN */}
         <div className='navbar' id='navbar'>
             
             <Link to="/"><img src={assets.logo2} alt="" className='logo' /></Link>
 
             <ul className="navbar-menu">
-                <HashLink smooth to="/" onClick={() => setMenu("Home")} className={menu === "Home" ? "active" : ""}>Home</HashLink>
+                <HashLink smooth to="/#home" onClick={() => setMenu("Home")} className={menu === "Home" ? "active" : ""}>Home</HashLink>
                 <HashLink smooth to="/#explore-menu" onClick={() => setMenu("Menu")} className={menu === "Menu" ? "active" : ""}>Plants</HashLink>
                 <HashLink smooth to="/#app-download" onClick={() => setMenu("Mobile-App")} className={menu === "Mobile-App" ? "active" : ""}>Mobile-App</HashLink>
                 <HashLink smooth to="/#footer" onClick={() => setMenu("Contact")} className={menu === "Contact" ? "active" : ""}>Contact Us</HashLink>
@@ -55,8 +56,15 @@ const Navbar = ({ setShowLogin }) => {
                 />
 
                 {!token ?
-    <button className="desktop-login" onClick={() => setShowLogin(true)}>Sign In</button>
-    :
+<button
+  className="desktop-login"
+  onClick={() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setShowLogin(true);
+  }}
+>
+  Sign In
+</button>    :
     <div className='navbar-profile desktop-profile'>
     <div className="profile-wrapper">
         <img src={assets.profile_icon} alt="profile" />
