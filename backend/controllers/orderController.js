@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 //---------------------- STRIPE ORDER -----------------------
 const placeOrder = async (req,res)=>{
-    const frontendURL = "http://localhost:5173";
+    const frontendURL = "https://plants-shop-frontend.onrender.com";
     try {
         const newOrder = new orderModel({
             userId:req.body.userId,
