@@ -109,14 +109,14 @@ searchRouter.post(
       });
 
       const prompt = `
-Identify the plant in the image.
-Respond ONLY in valid JSON:
+                      Identify the plant in the image.
+                      Respond ONLY in valid JSON:
 
-{
-  "name": "<plant common name>",
-  "description": "<2–3 line description>"
-}
-`;
+                      {
+                        "name": "<plant common name>",
+                        "description": "<2–3 line description>"
+                      }
+                      `;
 
       const response = await axios.post(
         `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
@@ -141,7 +141,7 @@ Respond ONLY in valid JSON:
       );
 
       // cleanup uploaded image
-      fs.unlink(req.file.path, () => {});
+      fs.unlink(req.file.path, () => { });
 
       if (!response.data?.candidates?.length) {
         return res.status(500).json({ error: "No response from Gemini" });
@@ -157,7 +157,7 @@ Respond ONLY in valid JSON:
         err.response?.data || err.message
       );
 
-      if (req.file?.path) fs.unlink(req.file.path, () => {});
+      if (req.file?.path) fs.unlink(req.file.path, () => { });
 
       res.status(500).json({
         error: "Plant identification failed",

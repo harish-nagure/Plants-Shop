@@ -131,10 +131,19 @@ import React, { useState, useEffect } from "react";
 import "./IdentifyPlant.css";
 import { assets } from "../../frontend/src/assets/assets";
 
-export default function IdentifyPlant({ setPlantNamePhoto }) {
+export default function IdentifyPlant({ setPlantNamePhoto,setLoading }) {
   const [preview, setPreview] = useState(null);
-  const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+    const handlePaste = (e) => {
+      if (e.clipboardData.files.length > 0) {
+        const file = e.clipboardData.files[0];
+        handleImageUpload({ target: { files: [file] } });
+      }
+    };
+    window.addEventListener("paste", handlePaste);
+    return () => window.removeEventListener("paste", handlePaste);
+  }, []);
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
@@ -186,7 +195,7 @@ export default function IdentifyPlant({ setPlantNamePhoto }) {
         accept="image/*"
         className="image-search-input"
         onChange={handleImageUpload}
-        disabled={loading}
+        disabled={setLoading}
       />
 
       {!preview && (

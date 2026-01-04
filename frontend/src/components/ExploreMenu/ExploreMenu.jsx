@@ -107,83 +107,92 @@ import { plant_category, assets } from "../../assets/assets.js";
 import IdentifyPlant from "../../IdentifyPlant";
 
 const ExploreMenu = ({ category, setCategory, setPlantName }) => {
-  const [search, setSearch] = useState("");
-  const [plantNamePhoto, setPlantNamePhoto] = useState("");
+    const [search, setSearch] = useState("");
+    const [plantNamePhoto, setPlantNamePhoto] = useState("");
+    const [loading, setLoading] = useState(false); // Loader state
 
-  // Text search effect
-  useEffect(() => {
-    if (search.trim()) {
-      setPlantName(search);
-      setCategory("All");
-    } else {
-      setPlantName("");
-      setCategory("All");
-    }
-  }, [search, setPlantName, setCategory]);
+    // Text search effect
+    useEffect(() => {
+        if (search.trim()) {
+            setPlantName(search);
+            setCategory("All");
+        } else {
+            setPlantName("");
+            setCategory("All");
+        }
+    }, [search, setPlantName, setCategory]);
 
-  // Image search effect
-  useEffect(() => {
-    if (plantNamePhoto.trim()) {
-      const value = plantNamePhoto.toLowerCase();
-      setSearch(value);
-      setPlantName(value);
-      setCategory("All");
-    }
-  }, [plantNamePhoto, setPlantName, setCategory]);
+    // Image search effect
+    useEffect(() => {
+        if (plantNamePhoto.trim()) {
+            const value = plantNamePhoto.toLowerCase();
+            setSearch(value);
+            setPlantName(value);
+            setCategory("All");
+        }
+    }, [plantNamePhoto, setPlantName, setCategory]);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value.toLowerCase());
-    if (plantNamePhoto) setPlantNamePhoto("");
-    setCategory("All");
-  };
+    const handleSearch = (e) => {
+        setSearch(e.target.value.toLowerCase());
+        if (plantNamePhoto) setPlantNamePhoto("");
+        setCategory("All");
+    };
 
-  return (
-    <div className="explore-menu" id="explore-menu">
-      <h1>Explore Our Plants</h1>
-      <p className="explore-menu-text">
-        Discover a world of greenery! Browse our diverse collection and find your
-        next favorite plant.
-      </p>
+    return (
+        <div className="explore-menu" id="explore-menu">
+            <h1>Explore Our Plants</h1>
+            <p className="explore-menu-text">
+                Discover a world of greenery! Browse our diverse collection and find your
+                next favorite plant.
+            </p>
 
-      <div className="search-bar" id="search-bar">
-        <div className="search-bar-left">
-          <img src={assets.search_icon} alt="" />
-          <input
-            type="search"
-            placeholder="Search for plants..."
-            className="explore-search-bar"
-            value={search}
-            onChange={handleSearch}
-          />
+            <div className="search-bar" id="search-bar">
+                <div className="search-bar-left">
+                    <img src={assets.search_icon} alt="" />
+                    <input
+                        type="search"
+                        placeholder="Search for plants..."
+                        className="explore-search-bar"
+                        value={search}
+                        onChange={handleSearch}
+                    />
+                </div>
+
+                <IdentifyPlant setPlantNamePhoto={setPlantNamePhoto} setLoading={setLoading} />
+
+                
+
+            </div>
+{loading && (
+                    <div className="loader-container">
+                        <div className="loader"></div>
+                    </div>
+                )}
+
+            <div className="explore-menu-list">
+                {plant_category.map((item, index) => (
+                    <div
+                        key={index}
+                        onClick={() =>
+                            setCategory((prev) =>
+                                prev === item.plant_name ? "All" : item.plant_name
+                            )
+                        }
+                        className="explore-menu-list-items"
+                    >
+                        <img
+                            className={category === item.plant_name ? "active" : ""}
+                            src={item.plant_image}
+                            alt={item.plant_name}
+                        />
+                        <p>{item.plant_name}</p>
+                    </div>
+                ))}
+            </div>
+
+            <hr />
         </div>
-
-        <IdentifyPlant setPlantNamePhoto={setPlantNamePhoto} />
-      </div>
-
-      <div className="explore-menu-list">
-        {plant_category.map((item, index) => (
-          <div
-            key={index}
-            onClick={() =>
-              setCategory((prev) =>
-                prev === item.plant_name ? "All" : item.plant_name
-              )
-            }
-            className="explore-menu-list-items"
-          >
-            <img
-              className={category === item.plant_name ? "active" : ""}
-              src={item.plant_image}
-              alt={item.plant_name}
-            />
-            <p>{item.plant_name}</p>
-          </div>
-        ))}
-      </div>
-
-      <hr />
-    </div>
-  );
+    );
 };
 
 export default ExploreMenu;
