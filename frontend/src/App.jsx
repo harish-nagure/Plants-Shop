@@ -35,8 +35,6 @@ const App = () => {
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/login" element={<Login />} />
-
-
       </Routes>
       
       </div>
