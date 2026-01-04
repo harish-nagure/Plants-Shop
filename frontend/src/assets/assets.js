@@ -2,7 +2,7 @@ import basket_icon from './basket_icon.png'
 import logo2 from './logo2.png'
 import search_icon from './search_icon.png'
 import menu_1 from './indoor.png'
-import menu_2 from './Outdoor.png'
+import menu_2 from './outdoor.png'
 import menu_3 from './flower.png'
 import menu_4 from './succlent.png'
 
