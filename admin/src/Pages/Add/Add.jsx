@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 const Add = () => {
 
-    const url = "http://localhost:4000";
+    const url = "https://plants-shop-backend.onrender.com";
     const [image,setImage] = useState(false);
     const [data,setData] = useState({
         name:"",
