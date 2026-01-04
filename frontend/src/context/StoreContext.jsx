@@ -5,7 +5,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = "http://localhost:4000";
+  const url = "https://plants-shop-backend.onrender.com";
   const [plant_list,setPlant_list] = useState([]);
 
   // Initialize token from localStorage only once
