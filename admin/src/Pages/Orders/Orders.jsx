@@ -57,7 +57,14 @@ const Orders = () => {
                   <p>{order.address.city+", "+order.address.state+", "+order.address.country+", "+order.address.zipcode}</p>
                 </div>
                 <p className="order-item-phone">{order.address.phone}</p>
-                <p className="order-item-id">Order Payment: {order.payment ? "Paid" : "Not Paid"} {order.status}</p>
+                {
+                  order.paymentMethod === "ONLINE" ? (
+                    <p className="order-item-id">Order Payment: {order.payment ? "Paid" : "Failed to Pay"}</p>
+                  ) : (
+                    <p className="order-item-id">Order Payment: Cash on Delivery ({order.paymentMethod})</p>
+                  )
+                }
+                {/* <p className="order-item-id">Payment Method: {order.paymentMethod}</p> */}
               </div>
               <p>Items: {order.items.length}</p>
               <p>₹ {order.amount}</p>

@@ -12,7 +12,8 @@ const placeOrder = async (req,res)=>{
             userId:req.body.userId,
             items:req.body.items,
             amount:req.body.amount,
-            address:req.body.address
+            address:req.body.address,
+            paymentMethod:"ONLINE",
         });
 
         await newOrder.save();
@@ -58,8 +59,8 @@ const placeCODOrder = async (req, res) => {
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address,
-            payment: false,  
-            status: "Plant Processing(COD)"
+            payment: false,
+            paymentMethod: "COD",
         });
 
         await codOrder.save();

@@ -36,6 +36,7 @@ const PlaceOrder = () => {
         let itemInfo = { ...item };
         itemInfo["quantity"] = cartItems[item._id];
         orderItems.push(itemInfo);
+
       }
     });
 
@@ -43,6 +44,7 @@ const PlaceOrder = () => {
       address: data,
       items: orderItems,
       amount: getTotalCartAmount() + 40,
+      paymentMethod: "ONLINE",
     };
 
     try {
@@ -76,7 +78,6 @@ const PlaceOrder = () => {
     });
 
     let orderData = {
-      userId: userId,
       address: data,
       items: orderItems,
       amount: getTotalCartAmount() + 40,
