@@ -162,7 +162,7 @@ export default function IdentifyPlant({ setPlantNamePhoto,setLoading }) {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/search/identify-plant",
+        "https://plants-shop-backend.onrender.com/api/search/identify-plant",
         {
           method: "POST",
           body: formData,
