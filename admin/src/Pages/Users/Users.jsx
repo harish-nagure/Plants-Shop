@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Users.css";
 
 const Users = () => {
-  const url = "http://localhost:4000";
+  const url = "https://plants-shop-backend.onrender.com";
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
